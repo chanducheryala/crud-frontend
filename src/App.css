@@ -1,0 +1,156 @@
+.main-container{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10em;
+
+}
+
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  padding-left: 1em;
+  flex: 1;
+}
+
+.output-container{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-top: .5em;
+  padding-left: 1em;
+
+  
+}
+
+
+.input-header{
+  display: flex;
+  flex: 1;
+  font-size: 40px;
+  font-weight: 700;
+  
+}
+.output-header{
+  display: flex;
+  flex: 1;
+  font-size: 40px;
+  font-weight: 700;
+  
+  margin-bottom: .4em;
+}
+
+.form-container{
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+
+.input-elements{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+}
+
+.label{
+  font-size: 20px;
+  font-weight: 550;
+}
+
+.submit-btn {
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 2em;
+  font-size: 18px;
+  font-weight: 900;
+  background-color: rgb(0,114,255);
+  border: none;
+  color:rgb(231,241,255);
+  border-radius: 0.25em;
+  box-shadow: inset 0.3px 0.3px 2px black;
+  
+}
+
+button:disabled{
+  background-color: rgb(74, 155, 253);
+}
+
+.titles{
+  display: flex;
+  flex-direction: row;
+  border-bottom: .1rem solid gray;
+
+
+}
+
+.title-name{
+  display: flex;
+  flex : 1;
+  justify-content: flex-start; 
+  font-size: 20px;
+  font-weight: 550;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  
+}
+
+.user{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+
+}
+
+.display-name, .display-userName{
+  display: flex;
+  flex : 1;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 18px;
+  font-weight: thin;
+  border-bottom: .1rem solid gray;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+  
+}
+
+
+.display-btn {
+  display: flex;
+  flex-direction: row;
+  flex : 1;
+  flex-wrap: wrap;
+  
+  align-items: center;
+  border-bottom: .1rem solid gray;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+  
+  font-weight: 500;
+
+}
+
+.action-btn {
+  padding-left: 20px;
+  padding-right: 20px;
+  height : 35px;
+  background-color: white;
+  border-radius: 4px;
+  border-color: gray;
+  border-width: thin;
+}
+
+.text-fields{
+  height: 2.5em;
+  font-size: 18px;
+  margin-top: .5em;
+
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 18px;
+}
