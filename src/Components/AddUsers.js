@@ -1,38 +1,43 @@
-import React , { useState, useRef, useEffect }from 'react'
+import React , { useState, useRef, useEffect}from 'react'
 import ViewUsers from './ViewUsers'
 
 const AddUsers = () => {
-    const [details, setDetails]  = useState({ Name : " ", userName : " ", editIndex : -1, isDisabled : true})
+    const [details, setDetails]  = useState({ Name : " ", userName : " ", editIndex : -1})
     const [list, setList] = useState([])
-    const[isDisabled, setIsDisabled] = useState(true);
+    const[isDisabled, setIsDisabled] = useState(true); 
     const nameRef = useRef();
-
-    useEffect(
-      () => {
-         if(details.editIndex === -1){
-            if(details.Name.trim().length !== 0  && details.userName.trim().length !== 0){
-               setIsDisabled(false)
-            }
-            else 
-            setIsDisabled(true)
-         }
-     },[details.Name, details.userName]
-      
-    )
+    
+    
+    useEffect(() =>{
+        let newName = String(details.Name).trim();
+        let newUserName = String(details.userName).trim();
+        if(newName.length !== 0  && newUserName.length !== 0) {
+             return setIsDisabled(false);
+        }else{
+            return setIsDisabled(true);
+        }   
+    },[details.Name, details.userName]
+    
+    )  
+   
 
     const submitHandler = (e) =>{
         e.preventDefault();
+        
+        let newName = String(details.Name).trim();
+        let newUserName = String(details.userName).trim();
     
-       if(details.Name.trim().length !== 0  && details.userName.trim().length !== 0) {
+       if(newName.length !== 0  && newUserName.length !== 0) {     
           
-        if(details.editIndex === -1 ){
+        if(details.editIndex === -1 ){ 
             setList([...list,{...details, Name : details.Name, userName : details.userName}])
             setDetails({...details,Name : ' ', userName:' '})
             setIsDisabled(true)
-         } else {
+            
+         } else {      
+
              const newList = list.map((person,index) => {
               if(index === details.editIndex){
-                  setDetails({...details, editIndex : -1})
                   return {...person, Name : details.Name, userName : details.userName}
               }
               else{
@@ -42,37 +47,37 @@ const AddUsers = () => {
              })
              setDetails({...details,Name : ' ', userName:' ', editIndex : -1})
                 setList(newList);
-                setIsDisabled(true)
+                
          }
        }
-         else {
-            alert("enter valid details")
-         }
         
     }
 
 
     const editHandler = (indexValue) => {
-
+        
         nameRef.current.focus();
-        const TargetObj = list.filter((person, index) => index === indexValue)
+        const TargetObj = list.filter((person, index) => index === indexValue) 
         const TargetName = TargetObj.map(person => person.Name);
         const TargetUserName = TargetObj.map(person => person.userName);
-
+       
        setDetails({...details, Name : TargetName, userName : TargetUserName, editIndex : indexValue})
+        
+       
 
     }
 
     const deleteHandler = (indexValue) => {
       const modifiedList = list.filter((person, index) => index !== indexValue)
-      setDetails({...details, Name : ' ', userName : ' ' , editIndex : -1});
+      setDetails({...details, Name : ' ', userName : ' ' , editIndex : -1});  
+      setIsDisabled(true);
       setList(modifiedList);
     }
     
      const changeHandler = (e) => {
-  
-        setDetails({...details, [e.target.name] : e.target.value, editIndex : -1})
+        setDetails({...details, [e.target.name] : e.target.value})
      }
+
   return (
     <div className='main-container'>
        <div className='input-container'>
@@ -81,11 +86,11 @@ const AddUsers = () => {
            
                 <div className='input-elements'>
                     <label className='label'>Name</label>
-                    <input type = "text"  name = 'Name' value = {details.Name} onChange = {changeHandler}  ref = {nameRef} className = 'text-fields' />
+                    <input type = "text"  name = 'Name' value = {details.Name} onChange = {changeHandler}  ref = {nameRef}  className = 'text-fields' required/>
                 </div>
                 <div className='input-elements'>
                     <label className='label'>Username</label>
-                    <input type = "text"  name = 'userName' value = {details.userName} onChange = {changeHandler} className = 'text-fields' />
+                    <input type = "text"  name = 'userName' value = {details.userName} onChange = {changeHandler} className = 'text-fields' required/>
                 </div>
                 <div >
                         <button type = 'submit' disabled = {isDisabled} className='submit-btn'>submit</button>

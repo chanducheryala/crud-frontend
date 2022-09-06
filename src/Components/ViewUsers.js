@@ -1,18 +1,28 @@
 import React from 'react'
 
 const ViewUsers = ({editHandler,deleteHandler, list}) => {
+
+
+   const headings = () => {
+    
+    return (list.length === 0) ? <div> </div> :
+       <div className='titles'>
+            <header className = 'title-name'>Name</header>
+            <header className = 'title-name'>Username</header>
+            <header className = 'title-name'>Actions</header>
+        </div>
+       
+     
+   }
     
   return (
     <div className='output-container'>
         <div>
             <header className = 'output-header'>View Users</header>
         </div>
-        <div className='titles'>
-            <header className = 'title-name'>Name</header>
-            <header className = 'title-name'>Username</header>
-            <header className = 'title-name'>Actions</header>
-            
-        </div>
+
+           {headings()}
+       
         <div className='user-details'>
              {
                 list.map((person, index) => {
@@ -28,7 +38,7 @@ const ViewUsers = ({editHandler,deleteHandler, list}) => {
                 })
             }
         </div>
-        <hr />
+       
     </div>
   )
 }
